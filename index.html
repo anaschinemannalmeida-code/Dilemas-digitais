@@ -6,18 +6,14 @@
     <title>Dilemas Digitais: Desafios e Soluções</title>
     <style>
         :root {
-            --primary: #1E1B4B;
-            --bg: #F3F4F6;
+            --primary: #2D112C;
+            --primary-light: #522258;
+            --accent-pink: #FF4B91;
+            --accent-purple: #8E44AD;
+            --bg: #F9F3F9;
             --card-bg: #FFFFFF;
-            --text: #1F2937;
-            
-            /* Cores de Destaque por Tópico */
-            --color-1: #4F46E5; /* Roxo/Azul - Privacidade */
-            --color-2: #EC4899; /* Rosa - Saúde Mental */
-            --color-3: #F59E0B; /* Laranja - Desinformação */
-            --color-4: #10B981; /* Verde - IA e Emprego */
-            --color-5: #06B6D4; /* Ciano - Inclusão Digital */
-            --color-6: #8B5CF6; /* Violeta - Lixo Eletrônico */
+            --text: #2D112C;
+            --text-light: #665268;
         }
 
         * {
@@ -34,21 +30,22 @@
         }
 
         header {
-            background: linear-gradient(135deg, #1E1B4B 0%, #4338CA 100%);
+            background: linear-gradient(135deg, #2D112C 0%, #8E44AD 50%, #FF4B91 100%);
             color: white;
             padding: 3.5rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(142, 68, 173, 0.25);
         }
 
         header h1 {
             font-size: 2.8rem;
             margin-bottom: 0.5rem;
             font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         header p {
-            color: #A5B4FC;
+            color: #FFD1E3;
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
@@ -63,10 +60,10 @@
         .intro {
             background-color: var(--card-bg);
             padding: 2rem;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-bottom: 2.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            border-left: 6px solid var(--color-1);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.08);
+            border-left: 6px solid var(--accent-pink);
         }
 
         .intro h2 {
@@ -82,20 +79,20 @@
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            border-top: 5px solid var(--accent-pink);
         }
 
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 25px rgba(142, 68, 173, 0.18);
         }
 
-        /* Imagem dos Cards */
         .card-img {
             width: 100%;
             height: 180px;
@@ -118,11 +115,15 @@
         .card .problem {
             margin-bottom: 1.2rem;
             flex-grow: 1;
+            color: var(--text-light);
         }
 
         .card .solution {
             padding: 1rem;
-            border-radius: 8px;
+            border-radius: 12px;
+            background-color: #F8E8F8;
+            border-left: 4px solid var(--accent-purple);
+            margin-bottom: 1.2rem;
         }
 
         .card .solution h3 {
@@ -131,38 +132,53 @@
             text-transform: uppercase;
             letter-spacing: 0.8px;
             font-weight: 700;
+            color: var(--accent-purple);
         }
 
-        /* BORDAS E CORES INDIVIDUAIS PARA CADA CARD */
-        .card-1 { border-top: 5px solid var(--color-1); }
-        .card-1 .solution { background-color: #EEF2FF; border-left: 4px solid var(--color-1); }
-        .card-1 .solution h3 { color: var(--color-1); }
+        /* Área de Interação (Curtir/Descurtir) */
+        .card-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #F0E2F0;
+        }
 
-        .card-2 { border-top: 5px solid var(--color-2); }
-        .card-2 .solution { background-color: #FDF2F8; border-left: 4px solid var(--color-2); }
-        .card-2 .solution h3 { color: var(--color-2); }
+        .action-btn {
+            background-color: #F3E5F5;
+            border: none;
+            padding: 0.5rem 0.9rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+        }
 
-        .card-3 { border-top: 5px solid var(--color-3); }
-        .card-3 .solution { background-color: #FFFBEB; border-left: 4px solid var(--color-3); }
-        .card-3 .solution h3 { color: var(--color-3); }
+        .action-btn:hover {
+            background-color: #E1BEE7;
+            transform: scale(1.05);
+        }
 
-        .card-4 { border-top: 5px solid var(--color-4); }
-        .card-4 .solution { background-color: #ECFDF5; border-left: 4px solid var(--color-4); }
-        .card-4 .solution h3 { color: var(--color-4); }
+        .action-btn.like-btn.active {
+            background-color: var(--accent-pink);
+            color: white;
+        }
 
-        .card-5 { border-top: 5px solid var(--color-5); }
-        .card-5 .solution { background-color: #ECFEFF; border-left: 4px solid var(--color-5); }
-        .card-5 .solution h3 { color: var(--color-5); }
-
-        .card-6 { border-top: 5px solid var(--color-6); }
-        .card-6 .solution { background-color: #F5F3FF; border-left: 4px solid var(--color-6); }
-        .card-6 .solution h3 { color: var(--color-6); }
+        .action-btn.dislike-btn.active {
+            background-color: var(--accent-purple);
+            color: white;
+        }
 
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: var(--primary);
-            color: #A5B4FC;
+            background: linear-gradient(135deg, #2D112C 0%, #522258 100%);
+            color: #FFD1E3;
             margin-top: 4rem;
         }
     </style>
@@ -183,7 +199,7 @@
         <main class="grid">
             
             <!-- Dilema 1 -->
-            <article class="card card-1">
+            <article class="card">
                 <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRp1mN_uMflzPsoz5PWYlBrMTZlZck_Wf-V6Hi3ysPjR2CoR2xCsu4K0rG_E0REDcXus88WL0zXITRcKaY" alt="Segurança de Dados" class="card-img">
                 <div class="card-body">
                     <h2>1. Privacidade vs. Dados Pessoais</h2>
@@ -194,11 +210,19 @@
                         <h3>Proposta & Solução</h3>
                         <p>Leis rígidas de proteção de dados (LGPD/GDPR), uso de criptografia ponta a ponta e conscientização sobre gestão de privacidade.</p>
                     </div>
+                    <div class="card-actions">
+                        <button class="action-btn like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">12</span>
+                        </button>
+                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
+                            👎 <span class="dislike-count">2</span>
+                        </button>
+                    </div>
                 </div>
             </article>
 
             <!-- Dilema 2 -->
-            <article class="card card-2">
+            <article class="card">
                 <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSZbNeLPcennmvejzIeHwiL0u3pAKI4EPaJPLFMk8jsAkPZIIE3epTUubgLMb510_cyhePraqTUYj0hERI" alt="Saúde Mental" class="card-img">
                 <div class="card-body">
                     <h2>2. Saúde Mental e Redes Sociais</h2>
@@ -209,11 +233,19 @@
                         <h3>Proposta & Solução</h3>
                         <p>Adoção do "Design Ético" (sem rolar infinito ou notificações excessivas) e incentivo a práticas diárias de bem-estar digital.</p>
                     </div>
+                    <div class="card-actions">
+                        <button class="action-btn like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">25</span>
+                        </button>
+                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
+                            👎 <span class="dislike-count">1</span>
+                        </button>
+                    </div>
                 </div>
             </article>
 
             <!-- Dilema 3 -->
-            <article class="card card-3">
+            <article class="card">
                 <img src="http://eavi.eu/wp-content/uploads/2020/06/beyond-fake-news_COLOUR_WEB-01-1200x1254-1-800x836.png" alt="Desinformação" class="card-img">
                 <div class="card-body">
                     <h2>3. Desinformação e "Fake News"</h2>
@@ -224,11 +256,19 @@
                         <h3>Proposta & Solução</h3>
                         <p>Inclusão de letramento mediático nas escolas, agências independentes de checagem e regulação da distribuição paga de conteúdo.</p>
                     </div>
+                    <div class="card-actions">
+                        <button class="action-btn like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">18</span>
+                        </button>
+                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
+                            👎 <span class="dislike-count">4</span>
+                        </button>
+                    </div>
                 </div>
             </article>
 
             <!-- Dilema 4 -->
-            <article class="card card-4">
+            <article class="card">
                 <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQRZC_GNULjvcQfrFa6LKG-KQAadCFOZC_GLf7UtVXJE0BcAg5R5vDzlllLLedJyB1TIZh79r_UcLeMuq8" alt="Inteligência Artificial" class="card-img">
                 <div class="card-body">
                     <h2>4. IA e Automação do Trabalho</h2>
@@ -239,11 +279,19 @@
                         <h3>Proposta & Solução</h3>
                         <p>Programas públicos e privados de transição de carreira (*upskilling*) e políticas de regulamentação ética no uso de IA corporativa.</p>
                     </div>
+                    <div class="card-actions">
+                        <button class="action-btn like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">30</span>
+                        </button>
+                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
+                            👎 <span class="dislike-count">3</span>
+                        </button>
+                    </div>
                 </div>
             </article>
 
-            <!-- Dilema 5 (Novo) -->
-            <article class="card card-5">
+            <!-- Dilema 5 -->
+            <article class="card">
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRUHOI1TfrYKqV9_CdrrMfkxSvShp38SG-1aCO85Eb5VimbAon2RPmnnNH6UaTu3X47pbrp7J2IwouifJE" alt="Acesso Digital" class="card-img">
                 <div class="card-body">
                     <h2>5. Desigualdade e Inclusão Digital</h2>
@@ -254,11 +302,19 @@
                         <h3>Proposta & Solução</h3>
                         <p>Investimento em infraestrutura pública de conectividade, subsídios para equipamentos e capacitação digital básica para todos.</p>
                     </div>
+                    <div class="card-actions">
+                        <button class="action-btn like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">15</span>
+                        </button>
+                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
+                            👎 <span class="dislike-count">0</span>
+                        </button>
+                    </div>
                 </div>
             </article>
 
-            <!-- Dilema 6 (Novo) -->
-            <article class="card card-6">
+            <!-- Dilema 6 -->
+            <article class="card">
                 <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSPucXmIzh8fyym2K0fx7koXoxhce2gvXdNv-FsArcV7zNZYEGf9TLPSFupKZX23xOdhQms-P2-PSH6gn4" alt="Lixo Eletrônico" class="card-img">
                 <div class="card-body">
                     <h2>6. Lixo Eletrônico e Impacto Ambiental</h2>
@@ -268,6 +324,14 @@
                     <div class="solution">
                         <h3>Proposta & Solução</h3>
                         <p>Incentivo à economia circular, leis de "Direito ao Reparo" e ampliação de pontos de coleta e reciclagem de componentes eletrônicos.</p>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">22</span>
+                        </button>
+                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
+                            👎 <span class="dislike-count">1</span>
+                        </button>
                     </div>
                 </div>
             </article>
@@ -279,5 +343,46 @@
         <p>&copy; 2026 Portal Dilemas Digitais — Conscientização e Ética na Tecnologia</p>
     </footer>
 
+    <script>
+        function toggleLike(btn) {
+            const card = btn.closest('.card-actions');
+            const dislikeBtn = card.querySelector('.dislike-btn');
+            const likeCount = btn.querySelector('.like-count');
+            const dislikeCount = dislikeBtn.querySelector('.dislike-count');
+
+            if (btn.classList.contains('active')) {
+                btn.classList.remove('active');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            } else {
+                btn.classList.add('active');
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+
+                if (dislikeBtn.classList.contains('active')) {
+                    dislikeBtn.classList.remove('active');
+                    dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+                }
+            }
+        }
+
+        function toggleDislike(btn) {
+            const card = btn.closest('.card-actions');
+            const likeBtn = card.querySelector('.like-btn');
+            const dislikeCount = btn.querySelector('.dislike-count');
+            const likeCount = likeBtn.querySelector('.like-count');
+
+            if (btn.classList.contains('active')) {
+                btn.classList.remove('active');
+                dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+            } else {
+                btn.classList.add('active');
+                dislikeCount.textContent = parseInt(dislikeCount.textContent) + 1;
+
+                if (likeBtn.classList.contains('active')) {
+                    likeBtn.classList.remove('active');
+                    likeCount.textContent = parseInt(likeCount.textContent) - 1;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
