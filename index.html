@@ -6,11 +6,18 @@
     <title>Dilemas Digitais: Desafios e Soluções</title>
     <style>
         :root {
-            --primary: #2A2D34;
-            --accent: #00A8E8;
-            --bg: #F4F6F9;
+            --primary: #1E1B4B;
+            --bg: #F3F4F6;
             --card-bg: #FFFFFF;
-            --text: #333333;
+            --text: #1F2937;
+            
+            /* Cores de Destaque por Tópico */
+            --color-1: #4F46E5; /* Roxo/Azul - Privacidade */
+            --color-2: #EC4899; /* Rosa - Saúde Mental */
+            --color-3: #F59E0B; /* Laranja - Desinformação */
+            --color-4: #10B981; /* Verde - IA e Emprego */
+            --color-5: #06B6D4; /* Ciano - Inclusão Digital */
+            --color-6: #8B5CF6; /* Violeta - Lixo Eletrônico */
         }
 
         * {
@@ -27,49 +34,79 @@
         }
 
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #1E1B4B 0%, #4338CA 100%);
             color: white;
-            padding: 3rem 1rem;
+            padding: 3.5rem 1rem;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            font-weight: 800;
         }
 
         header p {
-            color: var(--accent);
-            font-size: 1.1rem;
+            color: #A5B4FC;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        container {
-            display: block;
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .container {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
         }
 
         .intro {
             background-color: var(--card-bg);
             padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--color-1);
+        }
+
+        .intro h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 8px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+        }
+
+        /* Imagem dos Cards */
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
             padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card h2 {
@@ -79,30 +116,54 @@
         }
 
         .card .problem {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
         }
 
         .card .solution {
-            background-color: #EBF8FF;
             padding: 1rem;
-            border-radius: 6px;
-            border-left: 3px solid var(--accent);
+            border-radius: 8px;
         }
 
         .card .solution h3 {
-            font-size: 0.95rem;
-            color: #0077A3;
+            font-size: 0.85rem;
             margin-bottom: 0.3rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            font-weight: 700;
         }
+
+        /* BORDAS E CORES INDIVIDUAIS PARA CADA CARD */
+        .card-1 { border-top: 5px solid var(--color-1); }
+        .card-1 .solution { background-color: #EEF2FF; border-left: 4px solid var(--color-1); }
+        .card-1 .solution h3 { color: var(--color-1); }
+
+        .card-2 { border-top: 5px solid var(--color-2); }
+        .card-2 .solution { background-color: #FDF2F8; border-left: 4px solid var(--color-2); }
+        .card-2 .solution h3 { color: var(--color-2); }
+
+        .card-3 { border-top: 5px solid var(--color-3); }
+        .card-3 .solution { background-color: #FFFBEB; border-left: 4px solid var(--color-3); }
+        .card-3 .solution h3 { color: var(--color-3); }
+
+        .card-4 { border-top: 5px solid var(--color-4); }
+        .card-4 .solution { background-color: #ECFDF5; border-left: 4px solid var(--color-4); }
+        .card-4 .solution h3 { color: var(--color-4); }
+
+        .card-5 { border-top: 5px solid var(--color-5); }
+        .card-5 .solution { background-color: #ECFEFF; border-left: 4px solid var(--color-5); }
+        .card-5 .solution h3 { color: var(--color-5); }
+
+        .card-6 { border-top: 5px solid var(--color-6); }
+        .card-6 .solution { background-color: #F5F3FF; border-left: 4px solid var(--color-6); }
+        .card-6 .solution h3 { color: var(--color-6); }
 
         footer {
             text-align: center;
             padding: 2rem;
             background-color: var(--primary);
-            color: white;
-            margin-top: 3rem;
+            color: #A5B4FC;
+            margin-top: 4rem;
         }
     </style>
 </head>
@@ -113,62 +174,106 @@
         <p>Navegando entre os impactos da tecnologia e as soluções para o futuro</p>
     </header>
 
-    <container>
+    <div class="container">
         <section class="intro">
-            <h2>O que são?</h2>
-            <p>Os dilemas digitais surgem do conflito entre o avanço tecnológico rápido e os princípios éticos, sociais e individuais. Abaixo, analisamos os principais desafios da era conectada e as propostas práticas para mitiga-los.</p>
+            <h2>O que são os Dilemas Digitais?</h2>
+            <p>Os dilemas digitais surgem do conflito entre o avanço tecnológico acelerado e os impactos éticos, sociais e individuais. Abaixo, exploramos seis dos maiores desafios da era conectada e as propostas práticas para resolvê-los.</p>
         </section>
 
         <main class="grid">
+            
             <!-- Dilema 1 -->
-            <article class="card">
-                <h2>1. Privacidade vs. Dados Pessoais</h2>
-                <div class="problem">
-                    <p><strong>Desafio:</strong> Usuários cedem dados sensíveis em troca de serviços digitais gratuitos, alimentando a vigilância de capital e riscos de vazamentos.</p>
-                </div>
-                <div class="solution">
-                    <h3>Proposta & Solução</h3>
-                    <p>Aplicação rigorosa de leis de proteção de dados (como LGPD/GDPR), adoção de ferramentas de criptografia ponta a ponta e educação digital para gestão de privacidade.</p>
+            <article class="card card-1">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRp1mN_uMflzPsoz5PWYlBrMTZlZck_Wf-V6Hi3ysPjR2CoR2xCsu4K0rG_E0REDcXus88WL0zXITRcKaY" alt="Segurança de Dados" class="card-img">
+                <div class="card-body">
+                    <h2>1. Privacidade vs. Dados Pessoais</h2>
+                    <div class="problem">
+                        <p><strong>Desafio:</strong> Usuários cederem dados sensíveis em troca de serviços "gratuitos", alimentando o rastreamento em massa e o risco de vazamentos.</p>
+                    </div>
+                    <div class="solution">
+                        <h3>Proposta & Solução</h3>
+                        <p>Leis rígidas de proteção de dados (LGPD/GDPR), uso de criptografia ponta a ponta e conscientização sobre gestão de privacidade.</p>
+                    </div>
                 </div>
             </article>
 
             <!-- Dilema 2 -->
-            <article class="card">
-                <h2>2. Saúde Mental e Redes Sociais</h2>
-                <div class="problem">
-                    <p><strong>Desafio:</strong> Algoritmos focados em retenção geram vício em telas, ansiedade, comparação social e isolamento no mundo real.</p>
-                </div>
-                <div class="solution">
-                    <h3>Proposta & Solução</h3>
-                    <p>Implementação do "Design Ético" (sem reprodução automática e sem notificações abusivas), prática de bem-estar digital e imposição de limites de tempo de uso.</p>
+            <article class="card card-2">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSZbNeLPcennmvejzIeHwiL0u3pAKI4EPaJPLFMk8jsAkPZIIE3epTUubgLMb510_cyhePraqTUYj0hERI" alt="Saúde Mental" class="card-img">
+                <div class="card-body">
+                    <h2>2. Saúde Mental e Redes Sociais</h2>
+                    <div class="problem">
+                        <p><strong>Desafio:</strong> Algoritmos focados em reter atenção provocam vício em telas, ansiedade, comparação social e isolamento.</p>
+                    </div>
+                    <div class="solution">
+                        <h3>Proposta & Solução</h3>
+                        <p>Adoção do "Design Ético" (sem rolar infinito ou notificações excessivas) e incentivo a práticas diárias de bem-estar digital.</p>
+                    </div>
                 </div>
             </article>
 
             <!-- Dilema 3 -->
-            <article class="card">
-                <h2>3. Desinformação e "Fake News"</h2>
-                <div class="problem">
-                    <p><strong>Desafio:</strong> A propagação de notícias falsas e discursos de ódio em alta velocidade compromete processos democráticos e a coesão social.</p>
-                </div>
-                <div class="solution">
-                    <h3>Proposta & Solução</h3>
-                    <p>Incentivo ao letramento mediático nas escolas, checagem de fatos automatizada e responsabilidade das plataformas sobre conteúdos impulsionados.</p>
+            <article class="card card-3">
+                <img src="http://eavi.eu/wp-content/uploads/2020/06/beyond-fake-news_COLOUR_WEB-01-1200x1254-1-800x836.png" alt="Desinformação" class="card-img">
+                <div class="card-body">
+                    <h2>3. Desinformação e "Fake News"</h2>
+                    <div class="problem">
+                        <p><strong>Desafio:</strong> A rápida propagação de notícias falsas e discursos inflamados enfraquece a confiança e abala os processos democráticos.</p>
+                    </div>
+                    <div class="solution">
+                        <h3>Proposta & Solução</h3>
+                        <p>Inclusão de letramento mediático nas escolas, agências independentes de checagem e regulação da distribuição paga de conteúdo.</p>
+                    </div>
                 </div>
             </article>
 
             <!-- Dilema 4 -->
-            <article class="card">
-                <h2>4. Inteligência Artificial e Emprego</h2>
-                <div class="problem">
-                    <p><strong>Desafio:</strong> A automação acelerada por IA pode substituir postos de trabalho mais rápido do que a capacidade de requalificação das pessoas.</p>
-                </div>
-                <div class="solution">
-                    <h3>Proposta & Solução</h3>
-                    <p>Investimento em programas públicos de requalificação profissional (*upskilling*) e criação de políticas econômicas para transição de mercado sustentável.</p>
+            <article class="card card-4">
+                <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQRZC_GNULjvcQfrFa6LKG-KQAadCFOZC_GLf7UtVXJE0BcAg5R5vDzlllLLedJyB1TIZh79r_UcLeMuq8" alt="Inteligência Artificial" class="card-img">
+                <div class="card-body">
+                    <h2>4. IA e Automação do Trabalho</h2>
+                    <div class="problem">
+                        <p><strong>Desafio:</strong> A substituição rápida de postos de trabalho por Inteligência Artificial sem tempo hábil para a requalificação dos profissionais.</p>
+                    </div>
+                    <div class="solution">
+                        <h3>Proposta & Solução</h3>
+                        <p>Programas públicos e privados de transição de carreira (*upskilling*) e políticas de regulamentação ética no uso de IA corporativa.</p>
+                    </div>
                 </div>
             </article>
+
+            <!-- Dilema 5 (Novo) -->
+            <article class="card card-5">
+                <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRUHOI1TfrYKqV9_CdrrMfkxSvShp38SG-1aCO85Eb5VimbAon2RPmnnNH6UaTu3X47pbrp7J2IwouifJE" alt="Acesso Digital" class="card-img">
+                <div class="card-body">
+                    <h2>5. Desigualdade e Inclusão Digital</h2>
+                    <div class="problem">
+                        <p><strong>Desafio:</strong> A falta de acesso à internet de qualidade e a dispositivos modernos amplia o abismo socioeconômico em comunidades vulneráveis.</p>
+                    </div>
+                    <div class="solution">
+                        <h3>Proposta & Solução</h3>
+                        <p>Investimento em infraestrutura pública de conectividade, subsídios para equipamentos e capacitação digital básica para todos.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Dilema 6 (Novo) -->
+            <article class="card card-6">
+                <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSPucXmIzh8fyym2K0fx7koXoxhce2gvXdNv-FsArcV7zNZYEGf9TLPSFupKZX23xOdhQms-P2-PSH6gn4" alt="Lixo Eletrônico" class="card-img">
+                <div class="card-body">
+                    <h2>6. Lixo Eletrônico e Impacto Ambiental</h2>
+                    <div class="problem">
+                        <p><strong>Desafio:</strong> A obsolescência programada gera toneladas de resíduos eletrônicos difíceis de descartar, poluindo o meio ambiente.</p>
+                    </div>
+                    <div class="solution">
+                        <h3>Proposta & Solução</h3>
+                        <p>Incentivo à economia circular, leis de "Direito ao Reparo" e ampliação de pontos de coleta e reciclagem de componentes eletrônicos.</p>
+                    </div>
+                </div>
+            </article>
+
         </main>
-    </container>
+    </div>
 
     <footer>
         <p>&copy; 2026 Portal Dilemas Digitais — Conscientização e Ética na Tecnologia</p>
