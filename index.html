@@ -6,14 +6,21 @@
     <title>Dilemas Digitais: Desafios e Soluções</title>
     <style>
         :root {
-            --primary: #2D112C;
-            --primary-light: #522258;
-            --accent-pink: #FF4B91;
-            --accent-purple: #8E44AD;
-            --bg: #F9F3F9;
-            --card-bg: #FFFFFF;
-            --text: #2D112C;
-            --text-light: #665268;
+            /* Paleta de Cores em Tons Pastéis */
+            --bg: #FAF5FF;              /* Fundo geral roxo bem claro */
+            --card-bg: #FFFFFF;         /* Fundo dos cards */
+            --primary: #6B4E71;         /* Roxo suave para textos principais */
+            --text-light: #8A738F;      /* Roxo acinzentado para textos secundários */
+            
+            --pastel-pink-soft: #FDE2E4;/* Rosa bebê suave */
+            --pastel-pink-dark: #E29578;/* Rosa terroso suave para detalhes */
+            --pastel-purple-soft: #E8AEB7; /* Rosa arroxeado */
+            --pastel-purple-main: #B5E2FA; /* Roxo lilás tom pastel */
+            --pastel-purple-dark: #9D8189; /* Lilás escuro */
+            
+            --accent-pink: #F4ACB7;     /* Destaques em rosa */
+            --accent-purple: #D8B4F8;   /* Destaques em roxo lilás */
+            --box-shadow-color: rgba(181, 131, 141, 0.12);
         }
 
         * {
@@ -25,63 +32,74 @@
 
         body {
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--primary);
             line-height: 1.6;
         }
 
+        /* --- HEADER --- */
         header {
-            background: linear-gradient(135deg, #2D112C 0%, #8E44AD 50%, #FF4B91 100%);
-            color: white;
-            padding: 3.5rem 1rem;
+            background: linear-gradient(135deg, #E8D7F1 0%, #D3BCE2 50%, #F3C4D3 100%);
+            color: #523D57;
+            padding: 4rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(142, 68, 173, 0.25);
+            box-shadow: 0 4px 20px var(--box-shadow-color);
         }
 
         header h1 {
             font-size: 2.8rem;
             margin-bottom: 0.5rem;
             font-weight: 800;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: -0.5px;
         }
 
         header p {
-            color: #FFD1E3;
-            font-size: 1.2rem;
+            color: #6C5370;
+            font-size: 1.15rem;
             max-width: 600px;
             margin: 0 auto;
+            font-weight: 500;
         }
 
+        /* --- ESTRUTURA PRINCIPAL --- */
         .container {
             max-width: 1200px;
-            margin: 2.5rem auto;
+            margin: 3rem auto;
             padding: 0 1.5rem;
         }
 
+        /* Intro */
         .intro {
             background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.08);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
             border-left: 6px solid var(--accent-pink);
         }
 
         .intro h2 {
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.6rem;
         }
 
+        .intro p {
+            color: var(--text-light);
+        }
+
+        /* Grid de Cards */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
+        /* --- CARD --- */
         .card {
             background-color: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.08);
+            box-shadow: 0 8px 20px var(--box-shadow-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -89,18 +107,18 @@
         }
 
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(142, 68, 173, 0.18);
+            transform: translateY(-8px);
+            box-shadow: 0 14px 30px rgba(181, 131, 141, 0.25);
         }
 
         .card-img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
         }
 
         .card-body {
-            padding: 1.5rem;
+            padding: 1.8rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -108,50 +126,56 @@
 
         .card h2 {
             font-size: 1.3rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             color: var(--primary);
         }
 
         .card .problem {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
             color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         .card .solution {
-            padding: 1rem;
-            border-radius: 12px;
-            background-color: #F8E8F8;
+            padding: 1.2rem;
+            border-radius: 14px;
+            background-color: #F8EFFC;
             border-left: 4px solid var(--accent-purple);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .card .solution h3 {
-            font-size: 0.85rem;
-            margin-bottom: 0.3rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.4rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             font-weight: 700;
-            color: var(--accent-purple);
+            color: #9C6EB2;
         }
 
-        /* Área de Interação (Curtir/Descurtir) */
+        .card .solution p {
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        /* Ações (Curtir / Descurtir) */
         .card-actions {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid #F0E2F0;
+            gap: 0.8rem;
+            padding-top: 1rem;
+            border-top: 1px solid #F3E8F5;
         }
 
         .action-btn {
-            background-color: #F3E5F5;
-            border: none;
-            padding: 0.5rem 0.9rem;
-            border-radius: 20px;
+            background-color: #F7EEF9;
+            border: 1px solid #EBDDF0;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--primary);
             display: flex;
             align-items: center;
@@ -160,26 +184,31 @@
         }
 
         .action-btn:hover {
-            background-color: #E1BEE7;
-            transform: scale(1.05);
+            background-color: #EDE0F2;
+            transform: scale(1.03);
         }
 
         .action-btn.like-btn.active {
             background-color: var(--accent-pink);
+            border-color: var(--accent-pink);
             color: white;
         }
 
         .action-btn.dislike-btn.active {
-            background-color: var(--accent-purple);
+            background-color: #B282C9;
+            border-color: #B282C9;
             color: white;
         }
 
+        /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #2D112C 0%, #522258 100%);
-            color: #FFD1E3;
-            margin-top: 4rem;
+            padding: 2.5rem 1rem;
+            background: linear-gradient(135deg, #E2CEEB 0%, #D0B4DE 100%);
+            color: #523D57;
+            margin-top: 5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -198,7 +227,6 @@
 
         <main class="grid">
             
-            <!-- Dilema 1 -->
             <article class="card">
                 <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRp1mN_uMflzPsoz5PWYlBrMTZlZck_Wf-V6Hi3ysPjR2CoR2xCsu4K0rG_E0REDcXus88WL0zXITRcKaY" alt="Segurança de Dados" class="card-img">
                 <div class="card-body">
@@ -221,7 +249,6 @@
                 </div>
             </article>
 
-            <!-- Dilema 2 -->
             <article class="card">
                 <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSZbNeLPcennmvejzIeHwiL0u3pAKI4EPaJPLFMk8jsAkPZIIE3epTUubgLMb510_cyhePraqTUYj0hERI" alt="Saúde Mental" class="card-img">
                 <div class="card-body">
@@ -244,7 +271,6 @@
                 </div>
             </article>
 
-            <!-- Dilema 3 -->
             <article class="card">
                 <img src="http://eavi.eu/wp-content/uploads/2020/06/beyond-fake-news_COLOUR_WEB-01-1200x1254-1-800x836.png" alt="Desinformação" class="card-img">
                 <div class="card-body">
@@ -267,7 +293,6 @@
                 </div>
             </article>
 
-            <!-- Dilema 4 -->
             <article class="card">
                 <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQRZC_GNULjvcQfrFa6LKG-KQAadCFOZC_GLf7UtVXJE0BcAg5R5vDzlllLLedJyB1TIZh79r_UcLeMuq8" alt="Inteligência Artificial" class="card-img">
                 <div class="card-body">
@@ -277,7 +302,7 @@
                     </div>
                     <div class="solution">
                         <h3>Proposta & Solução</h3>
-                        <p>Programas públicos e privados de transição de carreira (*upskilling*) e políticas de regulamentação ética no uso de IA corporativa.</p>
+                        <p>Programas públicos e privados de transição de carreira (upskilling) e políticas de regulamentação ética no uso de IA corporativa.</p>
                     </div>
                     <div class="card-actions">
                         <button class="action-btn like-btn" onclick="toggleLike(this)">
@@ -290,7 +315,6 @@
                 </div>
             </article>
 
-            <!-- Dilema 5 -->
             <article class="card">
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRUHOI1TfrYKqV9_CdrrMfkxSvShp38SG-1aCO85Eb5VimbAon2RPmnnNH6UaTu3X47pbrp7J2IwouifJE" alt="Acesso Digital" class="card-img">
                 <div class="card-body">
@@ -313,7 +337,6 @@
                 </div>
             </article>
 
-            <!-- Dilema 6 -->
             <article class="card">
                 <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSPucXmIzh8fyym2K0fx7koXoxhce2gvXdNv-FsArcV7zNZYEGf9TLPSFupKZX23xOdhQms-P2-PSH6gn4" alt="Lixo Eletrônico" class="card-img">
                 <div class="card-body">
